@@ -25,6 +25,7 @@ router.post("/register", async (req, res) => {
 
     res.status(201).json({ message: "User registered successfully" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Something went wrong" });
   }
 });
@@ -40,7 +41,8 @@ router.post("/login", async (req, res) => {
 
     // Compare passwords
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
+    if (!isMatch)
+      return res.status(400).json({ message: "Invalid credentials" });
 
     // Create JWT
     const token = jwt.sign(
@@ -53,7 +55,7 @@ router.post("/login", async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true, // client can’t access it with JS
       secure: false, // true in production (HTTPS)
-      sameSite: "strict"
+      sameSite: "strict",
     });
 
     res.json({ message: "Logged in successfully" });
