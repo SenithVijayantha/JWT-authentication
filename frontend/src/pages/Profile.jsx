@@ -24,9 +24,18 @@ export default function Profile() {
 
   return (
     <div>
-      <h2>Profile</h2>
-      <p>Name: {user.name}</p>
-      <p>Email: {user.email}</p>
+      <div className="card card-title bg-base-100 shadow-sm">
+        <div className="avatar">
+          <div className="ring-primary ring-offset-base-100 w-24 rounded-full ring-2 ring-offset-2">
+            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+          </div>
+        </div>
+        <div className="card-body">
+          <h1 className="card-title">Profile</h1>
+          <p>Name: {user.name}</p>
+          <p>Email: {user.email}</p>
+        </div>
+      </div>
     </div>
   );
 }
