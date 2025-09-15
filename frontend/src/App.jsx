@@ -1,4 +1,5 @@
 import { Routes, Route, Link } from "react-router";
+import Welcome from "./pages/Welcome";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
@@ -14,7 +15,7 @@ function App() {
         </nav>
 
         <Routes>
-          <Route path="/" element={<h1>Welcome to MERN Auth</h1>} />
+          <Route path="/" element={<Welcome />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
