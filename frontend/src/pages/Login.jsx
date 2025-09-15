@@ -19,18 +19,10 @@ export default function Login() {
       setMessage(err.response.data.message);
     }
   };
-  {
-    /* <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input name="email" placeholder="Email" onChange={handleChange} />
-        <input name="password" type="password" placeholder="Password" onChange={handleChange} />
-        <button type="submit">Login</button>
-      </form>
-      <p>{message}</p> */
-  }
+
   return (
     <form
-      className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl"
+      className="card bg-base-100 border-primary border-2 w-full max-w-sm shrink-0 shadow-2xl"
       // role="form"
       onSubmit={handleSubmit}
     >
@@ -53,10 +45,13 @@ export default function Login() {
             onChange={handleChange}
           />
           <p className="text-success font-medium">{message}</p>
-          <button type="submit" className="btn btn-neutral mt-4">
+          <button type="submit" className="btn btn-primary mt-4">
             Login
           </button>
-          <Link to={"/register"} className="btn btn-ghost btn-outline mt-4">
+          <Link
+            to={"/register"}
+            className="btn btn-soft btn-primary btn-outline mt-4"
+          >
             Register
           </Link>
         </fieldset>
