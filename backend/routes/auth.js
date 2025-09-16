@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
     // Send token in cookie
     res.cookie("token", token, {
       httpOnly: true, // client can’t access it with JS
-      secure: process.env.MONGO_URI === "production", // true in production (HTTPS)
+      secure: process.env.NODE_ENV === "production", // true in production (HTTPS)
       sameSite: "strict",
     });
 
