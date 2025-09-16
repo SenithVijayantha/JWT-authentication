@@ -6,6 +6,18 @@ import { verifyToken } from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
+router.get("/me", verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+
+    // Checks if the user exists
+    if (!user) return res.status(404).json({ message: "User not foun" });
+    res.json({ authentication: true });
+  } catch (error) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 // Register
 router.post("/register", async (req, res) => {
   try {
