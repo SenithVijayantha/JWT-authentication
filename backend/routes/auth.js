@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
     // Send token in cookie
     res.cookie("token", token, {
       httpOnly: true, // client can’t access it with JS
-      secure: false, // true in production (HTTPS)
+      secure: process.env.MONGO_URI === "production" ? true : false, // true in production (HTTPS)
       sameSite: "strict",
     });
 
@@ -66,6 +66,7 @@ router.post("/login", async (req, res) => {
 
 // Example protected route
 router.get("/profile", verifyToken, async (req, res) => {
+  // console.log(req.user.id);
   const user = await User.findById(req.user.id).select("-password"); // exclude password
   res.json(user);
 });
